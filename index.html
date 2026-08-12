@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhinnan Payne: Social Media & Content Growth Manager</title>
+<style>
+  :root{
+    --ink:#2D1B3D;
+    --paper:#FDFBFE;
+    --paper-dim:#F5EEF9;
+    --line:#E3D4EE;
+    --grey:#7A6B85;
+    --signal:#D6408F;
+    --signal-dim:#FBE3F0;
+    --leaf:#3FAE6E;
+    --sky:#8B5FD1;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+
+  .mono{
+    font-family:'SF Mono','Courier New',monospace;
+    letter-spacing:0.02em;
+  }
+
+  a{color:inherit;}
+
+  /* ===== MASTHEAD ===== */
+  header.masthead{
+    border-bottom:2px solid var(--ink);
+    padding:40px 6vw 28px;
+    background:linear-gradient(135deg, var(--paper) 0%, var(--paper-dim) 100%);
+  }
+  .masthead-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:16px;
+    margin-bottom:28px;
+  }
+  .masthead-top .mono{
+    font-size:11px;
+    color:var(--grey);
+    text-transform:uppercase;
+  }
+  h1{
+    font-size:clamp(38px,6vw,68px);
+    font-weight:700;
+    letter-spacing:-0.02em;
+    line-height:0.98;
+  }
+  .role-line{
+    font-size:clamp(15px,2vw,19px);
+    color:var(--signal);
+    font-weight:600;
+    margin-top:10px;
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+  }
+  .contact-block{
+    text-align:right;
+    font-size:13px;
+    line-height:1.7;
+  }
+  .contact-block a{text-decoration:none; border-bottom:1px solid var(--line);}
+  .contact-block a:hover{border-color:var(--ink);}
+
+  /* ===== STATS DASHBOARD ===== */
+  .stats-bar{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+    border:2px solid var(--ink);
+    border-radius:14px;
+    overflow:hidden;
+    margin-top:8px;
+  }
+  .stat{
+    padding:18px 20px;
+    border-right:2px solid var(--ink);
+    background:var(--paper);
+  }
+  .stat:nth-child(2){background:var(--signal-dim);}
+  .stat:nth-child(3){background:#E4F5EA;}
+  .stat:nth-child(4){background:#EEE7FA;}
+  .stat:nth-child(5){background:var(--paper-dim);}
+  .stat:last-child{border-right:none;}
+  .stat-num{
+    font-size:clamp(24px,3vw,34px);
+    font-weight:700;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .stat-label{
+    font-size:10px;
+    color:var(--grey);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    margin-top:4px;
+  }
+
+  /* ===== SECTIONS ===== */
+  section{
+    padding:56px 6vw;
+    border-bottom:1px solid var(--line);
+  }
+  .section-head{
+    margin-bottom:8px;
+  }
+  .section-handle{
+    font-size:clamp(26px,3.4vw,36px);
+    font-weight:700;
+    letter-spacing:-0.01em;
+    line-height:1.1;
+  }
+  .section-subhead{
+    font-size:clamp(14px,1.6vw,17px);
+    color:var(--signal);
+    font-weight:600;
+    margin-top:4px;
+  }
+  .section-meta{
+    font-size:11px;
+    color:var(--grey);
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    margin-top:6px;
+  }
+  .section-summary{
+    max-width:720px;
+    color:#3a3a36;
+    font-size:15px;
+    margin:18px 0 32px;
+  }
+  .section-summary strong{color:var(--ink);}
+
+  /* ===== CARD GRID ===== */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+    gap:24px;
+  }
+  .card{
+    background:var(--paper);
+    padding:16px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    border:1px solid var(--line);
+    border-top:4px solid var(--leaf);
+    border-radius:12px;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .card:nth-child(3n+2){border-top-color:var(--signal);}
+  .card:nth-child(3n+3){border-top-color:var(--sky);}
+  .card:hover{transform:translateY(-3px); box-shadow:0 8px 20px rgba(14,59,46,0.08);}
+  .embed-wrap{
+    border-radius:8px;
+    overflow:hidden;
+    background:var(--paper-dim);
+    min-height:200px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .embed-wrap iframe, .embed-wrap blockquote{width:100% !important;}
+  .card-platform{
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--signal);
+    font-weight:700;
+  }
+  .card-title{
+    font-size:16px;
+    font-weight:700;
+    line-height:1.25;
+  }
+  .card-desc{
+    font-size:13px;
+    color:var(--grey);
+    flex-grow:1;
+  }
+  .card-metric{
+    font-size:12px;
+    color:var(--ink);
+    border-top:1px solid var(--line);
+    padding-top:10px;
+  }
+  .card-link{
+    font-size:12px;
+    font-weight:600;
+    text-decoration:none;
+    color:var(--sky);
+    border-bottom:1px solid var(--sky);
+    align-self:flex-start;
+  }
+
+  /* ===== EDIT MODE ===== */
+  #edit-toggle{
+    position:fixed;
+    bottom:24px;
+    right:24px;
+    z-index:999;
+    background:var(--ink);
+    color:var(--paper);
+    border:none;
+    padding:12px 20px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 6px 18px rgba(45,27,61,0.25);
+  }
+  #copy-order-btn{
+    position:fixed;
+    bottom:24px;
+    right:190px;
+    z-index:999;
+    background:var(--signal);
+    color:var(--paper);
+    border:none;
+    padding:12px 20px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 6px 18px rgba(214,64,143,0.25);
+    display:none;
+  }
+  body.edit-mode #copy-order-btn{display:inline-block;}
+  body.edit-mode section, body.edit-mode .card{
+    cursor:grab;
+    outline:2px dashed transparent;
+  }
+  body.edit-mode section:hover, body.edit-mode .card:hover{
+    outline-color:var(--sky);
+  }
+  .dragging{opacity:0.4;}
+  body.edit-mode section::before{
+    content:"⠿ drag section";
+    display:block;
+    font-size:10px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--sky);
+    margin-bottom:10px;
+  }
+  body.edit-mode .card::before{
+    content:"⠿ drag card";
+    display:block;
+    font-size:9px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--grey);
+  }
+
+  /* ===== NEWSLETTER STRIP ===== */
+  .archive-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .archive-row:last-child{border-bottom:none;}
+  .archive-vol{
+    font-size:11px;
+    color:var(--grey);
+    min-width:70px;
+  }
+  .archive-title{
+    font-size:15px;
+    font-weight:600;
+    flex-grow:1;
+  }
+  .archive-link{
+    font-size:12px;
+    font-weight:600;
+    text-decoration:none;
+    color:var(--sky);
+    border-bottom:1px solid var(--sky);
+    white-space:nowrap;
+  }
+
+  /* ===== FOOTER ===== */
+  footer{
+    padding:36px 6vw 48px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:14px;
+    font-size:12px;
+    color:var(--grey);
+  }
+  footer a{text-decoration:none; border-bottom:1px solid var(--line); color:var(--ink);}
+
+  @media (max-width:640px){
+    .masthead-top{flex-direction:column; align-items:flex-start;}
+    .contact-block{text-align:left;}
+  }
+
+  /* ===== PASSWORD GATE ===== */
+  #gate{
+    position:fixed;
+    inset:0;
+    background:var(--ink);
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+  #gate.hidden{display:none;}
+  #gate-box{
+    background:var(--paper);
+    border-radius:16px;
+    padding:40px;
+    max-width:360px;
+    width:100%;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(0,0,0,0.3);
+  }
+  #gate-box h2{
+    font-size:20px;
+    margin-bottom:6px;
+    color:var(--ink);
+  }
+  #gate-box p{
+    font-size:13px;
+    color:var(--grey);
+    margin-bottom:20px;
+  }
+  #gate-input{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    font-size:14px;
+    margin-bottom:12px;
+    font-family:inherit;
+  }
+  #gate-input:focus{
+    outline:none;
+    border-color:var(--sky);
+  }
+  #gate-submit{
+    width:100%;
+    padding:12px;
+    background:var(--signal);
+    color:var(--paper);
+    border:none;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  #gate-error{
+    font-size:12px;
+    color:var(--signal);
+    margin-top:10px;
+    display:none;
+  }
+  body.locked > *:not(#gate){display:none;}
+</style>
+</head>
+<body class="locked">
+
+<div id="gate">
+  <div id="gate-box">
+    <h2>Private Portfolio</h2>
+    <p>Enter the password to view Rhinnan Payne's work.</p>
+    <input type="password" id="gate-input" placeholder="Password" autocomplete="off">
+    <button id="gate-submit">Enter</button>
+    <div id="gate-error">Incorrect password. Try again.</div>
+  </div>
+</div>
+
+<!-- ✏️ EDIT: name, role, email, and LinkedIn link live here -->
+<header class="masthead">
+  <div class="masthead-top">
+    <div>
+      <h1>Rhinnan Payne</h1>
+      <div class="role-line">Social Media &amp; Content Growth Manager</div>
+    </div>
+    <div class="contact-block">
+      <div><a href="mailto:RhinnanPayne@gmail.com">RhinnanPayne@gmail.com</a></div>
+      <div><a href="https://www.linkedin.com/in/rhinnanpayne" target="_blank" rel="noopener">linkedin.com/in/rhinnanpayne</a></div>
+    </div>
+  </div>
+
+  <!-- ✏️ EDIT: the stats boxes. Each .stat is one box: the big number, then the small label. -->
+  <div class="stats-bar mono">
+    <div class="stat">
+      <div class="stat-num">0→55K</div>
+      <div class="stat-label">Channel built from zero (Case Studied IG, 12 mo.)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">500K</div>
+      <div class="stat-label">TikTok: @RhinnanPayne</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">314K</div>
+      <div class="stat-label">Instagram: @RhinnanPayne</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Original creative accounts, comic + lifestyle</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Daily</div>
+      <div class="stat-label">Publishing cadence across all channels</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     SECTION: Case Studied / Vendry
+     ✏️ EDIT: headline, summary text, and the cards below.
+     To add a card: copy an entire <div class="card">...</div> block,
+     paste it inside the grid, and change the Instagram link in
+     data-instgrm-permalink to the new post's URL.
+     ============================================================ -->
+<section id="sec-case-studied" data-label="Case Studied Brief">
+  <div class="section-head">
+    <div class="section-handle">Case Studied Brief</div>
+    <div class="section-subhead">Channel build, 0 to 55K in twelve months</div>
+    <div class="section-meta">Vendry · Newsletter &amp; Instagram</div>
+  </div>
+  <div class="section-summary">
+    Set up and grew Case Studied's Instagram channel from zero to <strong>55,000 followers in twelve months</strong>, owning content calendar, posting strategy, organic content, and Meta ads end to end. In parallel, ran full editorial ownership of the Case Studied Brief newsletter, read by <strong>40,000+ subscribers</strong> at a <strong>52% open rate</strong>, the same pattern this role calls for: standing up a channel from scratch, building a publishing structure, and driving early audience growth.
+  </div>
+
+  <div class="grid" id="grid-case-studied">
+    <div class="card" id="card-elf" data-label="e.l.f. × Melissa McCarthy">
+      <div class="card-platform">Instagram</div>
+      <div class="card-title">e.l.f. × Melissa McCarthy</div>
+      <div class="embed-wrap">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DUWTrA6kl3Q/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
+      </div>
+      <div class="card-desc">Campaign breakdown post, top-performing format.</div>
+    </div>
+    <div class="card" id="card-twim" data-label="This Week in Marketing">
+      <div class="card-platform">Instagram</div>
+      <div class="card-title">This Week in Marketing</div>
+      <div class="embed-wrap">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DZqDyOWmRqY/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
+      </div>
+      <div class="card-desc">Weekly recurring recap series driving consistent return engagement, evidence of a working content calendar.</div>
+    </div>
+    <div class="card" id="card-mcd" data-label="McDonald's CEO Bite">
+      <div class="card-platform">Instagram</div>
+      <div class="card-title">McDonald's CEO Bite</div>
+      <div class="embed-wrap">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DVg703igWHD/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
+      </div>
+      <div class="card-desc">News-jacking format built for shareability.</div>
+    </div>
+  </div>
+
+  <!-- ✏️ EDIT: newsletter issue links -->
+  <div style="margin-top:32px;">
+    <div class="archive-row">
+      <div class="archive-vol mono">Vol. 22</div>
+      <div class="archive-title">Ketchup, Jeffs, and a $111 billion problem</div>
+      <a class="archive-link" href="https://www.casestudied.com/archive/jun25" target="_blank" rel="noopener">Read issue →</a>
+    </div>
+    <div class="archive-row">
+      <div class="archive-vol mono">Vol. 12</div>
+      <div class="archive-title">Weekly campaign &amp; industry recap</div>
+      <a class="archive-link" href="https://www.casestudied.com/archive/apr16" target="_blank" rel="noopener">Read issue →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION: Personal brand (@RhinnanPayne)
+     ============================================================ -->
+<section id="sec-personal-brand" data-label="Personal Brand">
+  <div class="section-head">
+    <div class="section-handle">@RhinnanPayne</div>
+    <div class="section-subhead">Grew a personal audience from the ground up across Instagram &amp; TikTok</div>
+    <div class="section-meta">314K Instagram · 500K TikTok</div>
+  </div>
+  <div class="section-summary">
+    Independent creator running <strong>314K</strong> Instagram and <strong>500K</strong> TikTok followers, built on short-form video with a bright, energetic, welcoming tone, the register that reads well to parents and general audiences alike. Content is edited and adapted separately for each platform, then cross-posted, the same workflow this role asks for: taking long-form content and turning it into short-form assets across YouTube Shorts, TikTok, and Reels.
+  </div>
+
+  <div class="grid" id="grid-personal-brand">
+    <div class="card" id="card-rp-1" data-label="RhinnanPayne Sample 1">
+      <div class="card-platform">Instagram</div>
+      <div class="card-title">@RhinnanPayne</div>
+      <div class="embed-wrap">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DSYgbd1ElFu/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
+      </div>
+      <div class="card-desc">Sample post from the main channel.</div>
+    </div>
+    <div class="card" id="card-rp-2" data-label="RhinnanPayne Sample 2">
+      <div class="card-platform">TikTok</div>
+      <div class="card-title">@RhinnanPayne</div>
+      <div class="embed-wrap">
+        <!-- ✏️ EDIT: TikTok embeds need the full video link (not a vt.tiktok.com short link).
+             Paste the full URL like https://www.tiktok.com/@user/video/1234567890 into cite,
+             and put the long number at the end into data-video-id. -->
+        <blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZSCkgQPfT/" data-video-id="" style="max-width:100%; min-width:100%; margin:0;">
+          <section></section>
+        </blockquote>
+      </div>
+      <div class="card-desc">Sample post from the main channel, cross-posted from Instagram.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION: Creative side projects
+     ============================================================ -->
+<section id="sec-creative-projects" data-label="Creative Side Projects">
+  <div class="section-head">
+    <div class="section-handle">@cloo_cool &amp; @thatscoolrhinnan</div>
+    <div class="section-subhead">Original, self-directed creative accounts</div>
+    <div class="section-meta">Original IP · Instagram</div>
+  </div>
+  <div class="section-summary">
+    Independent projects outside the main channel, one an illustrated character series, the other a lifestyle and pop-culture format, both conceived, produced, and published solo. Evidence of range beyond talking-head content and comfort building a visual identity from the ground up.
+  </div>
+
+  <div class="grid" id="grid-creative-projects">
+    <div class="card" id="card-cloo-1" data-label="Cloo the Blob, Post 1">
+      <div class="card-platform">Instagram · @cloo_cool</div>
+      <div class="card-title">Cloo</div>
+      <div class="embed-wrap">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DZFAye9G3p-/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
+      </div>
+      <div class="card-desc">Original comic character, hand-drawn and digitized into clean black-and-white illustration. Cloo is a small blob who explores everyday life, captioned with light, calm commentary.</div>
+    </div>
+    <div class="card" id="card-cloo-2" data-label="Cloo the Blob, Post 2">
+      <div class="card-platform">Instagram · @cloo_cool</div>
+      <div class="card-title">Cloo</div>
+      <div class="embed-wrap">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DS_8GHNlcWs/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
+      </div>
+      <div class="card-desc">Full concept-to-post pipeline: freehand illustration, scanned, digitized, then captioned and published.</div>
+    </div>
+    <div class="card" id="card-tcr-1" data-label="That's Cool Rhinnan, Post 1">
+      <div class="card-platform">Instagram · @thatscoolrhinnan</div>
+      <div class="card-title">That's Cool Rhinnan</div>
+      <div class="embed-wrap">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C8dWP9DPl2I/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
+      </div>
+      <div class="card-desc">Casual, text-heavy lifestyle and pop-culture humor built from digital collage and everyday moments.</div>
+    </div>
+    <div class="card" id="card-tcr-2" data-label="That's Cool Rhinnan, Post 2">
+      <div class="card-platform">Instagram · @thatscoolrhinnan</div>
+      <div class="card-title">That's Cool Rhinnan</div>
+      <div class="embed-wrap">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DUbvIx-khxC/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
+      </div>
+      <div class="card-desc">Relatable, humorous commentary format layered over candid lifestyle snippets.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION: Brand partnerships
+     ============================================================ -->
+<section id="sec-partnerships" data-label="Brand Partnerships" style="border-bottom:none;">
+  <div class="section-head">
+    <div class="section-handle">Brand Partnerships</div>
+    <div class="section-subhead">Coordinating sponsored content across platforms</div>
+    <div class="section-meta">Sponsored Content</div>
+  </div>
+  <div class="section-summary">
+    Coordinated sponsored content for major streaming and audio platforms, aligning partner briefs with personal channel publishing schedules across Instagram and TikTok, the same coordination this role needs between an influencer partner and channel launch.
+  </div>
+
+  <div class="grid" id="grid-partnerships">
+    <div class="card" id="card-primevideo" data-label="Prime Video Partnership">
+      <div class="card-platform">Instagram · Prime Video</div>
+      <div class="card-title">Prime Video Partnership</div>
+      <div class="embed-wrap">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DYXexM1hFiM/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
+      </div>
+      <div class="card-desc">Conversational sponsored integration.</div>
+    </div>
+    <div class="card" id="card-spotify" data-label="Spotify Partnership">
+      <div class="card-platform">TikTok · Spotify</div>
+      <div class="card-title">Spotify Partnership</div>
+      <div class="embed-wrap">
+        <!-- ✏️ EDIT: same as the other TikTok embed — needs full URL + video ID to display. -->
+        <blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZSCkpjo1w/" data-video-id="" style="max-width:100%; min-width:100%; margin:0;">
+          <section></section>
+        </blockquote>
+      </div>
+      <div class="card-desc">Promotional sponsored video.</div>
+    </div>
+  </div>
+  <div class="section-meta" style="margin-top:18px;">Additional partnerships: Meta, Netflix</div>
+</section>
+
+<!-- ✏️ EDIT: footer contact info -->
+<footer>
+  <div>Rhinnan Payne: Social Media &amp; Content Growth Manager</div>
+  <div><a href="mailto:RhinnanPayne@gmail.com">RhinnanPayne@gmail.com</a> · <a href="https://www.linkedin.com/in/rhinnanpayne" target="_blank" rel="noopener">LinkedIn</a></div>
+</footer>
+
+<button id="edit-toggle">Edit Layout</button>
+<button id="copy-order-btn">Copy Order</button>
+
+<script>
+(function(){
+  /* ✏️ EDIT: change the password here.
+     NOTE: this is a courtesy gate, not real security — anyone who views the
+     page source can read it. Don't reuse a password from anywhere else. */
+  var PASSWORD = "PortfolioRP";
+  var gate = document.getElementById('gate');
+  var input = document.getElementById('gate-input');
+  var submit = document.getElementById('gate-submit');
+  var error = document.getElementById('gate-error');
+  var body = document.body;
+
+  function tryUnlock(){
+    if(input.value === PASSWORD){
+      body.classList.remove('locked');
+      gate.classList.add('hidden');
+      sessionStorage.setItem('rp-portfolio-unlocked', '1');
+    } else {
+      error.style.display = 'block';
+      input.value = '';
+      input.focus();
+    }
+  }
+
+  if(sessionStorage.getItem('rp-portfolio-unlocked') === '1'){
+    body.classList.remove('locked');
+    gate.classList.add('hidden');
+  }
+
+  submit.addEventListener('click', tryUnlock);
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter') tryUnlock();
+  });
+})();
+</script>
+
+<script async src="https://www.instagram.com/embed.js"></script>
+<script async src="https://www.tiktok.com/embed.js"></script>
+
+<script>
+(function(){
+  var body = document.body;
+  var editBtn = document.getElementById('edit-toggle');
+  var copyBtn = document.getElementById('copy-order-btn');
+  var draggedEl = null;
+
+  function makeDraggable(el){
+    el.setAttribute('draggable', 'true');
+    el.addEventListener('dragstart', function(e){
+      draggedEl = el;
+      el.classList.add('dragging');
+      e.stopPropagation();
+    });
+    el.addEventListener('dragend', function(e){
+      el.classList.remove('dragging');
+      e.stopPropagation();
+    });
+  }
+
+  function makeContainerSortable(container, itemSelector){
+    container.addEventListener('dragover', function(e){
+      e.preventDefault();
+      if(!draggedEl || draggedEl.parentElement !== container) return;
+      var afterEl = getDragAfterElement(container, e.clientY, itemSelector);
+      if(afterEl == null){
+        container.appendChild(draggedEl);
+      } else {
+        container.insertBefore(draggedEl, afterEl);
+      }
+    });
+  }
+
+  function getDragAfterElement(container, y, itemSelector){
+    var items = Array.prototype.slice.call(container.querySelectorAll(itemSelector + ':not(.dragging)'));
+    var closest = {offset: -Infinity, element: null};
+    items.forEach(function(child){
+      var box = child.getBoundingClientRect();
+      var offset = y - box.top - box.height / 2;
+      if(offset < 0 && offset > closest.offset){
+        closest = {offset: offset, element: child};
+      }
+    });
+    return closest.element;
+  }
+
+  // Sections are children of body, in order
+  var mainContainer = document.body;
+  document.querySelectorAll('section').forEach(function(sec){
+    makeDraggable(sec);
+  });
+  makeContainerSortable(mainContainer, 'section');
+
+  // Cards within each grid
+  document.querySelectorAll('.grid').forEach(function(grid){
+    grid.querySelectorAll('.card').forEach(function(card){
+      makeDraggable(card);
+    });
+    makeContainerSortable(grid, '.card');
+  });
+
+  editBtn.addEventListener('click', function(){
+    body.classList.toggle('edit-mode');
+    editBtn.textContent = body.classList.contains('edit-mode') ? 'Exit Edit Mode' : 'Edit Layout';
+  });
+
+  copyBtn.addEventListener('click', function(){
+    var lines = ['SECTION ORDER:'];
+    document.querySelectorAll('section').forEach(function(sec, i){
+      lines.push((i+1) + '. ' + (sec.dataset.label || sec.id));
+    });
+    lines.push('');
+    document.querySelectorAll('section').forEach(function(sec){
+      var grid = sec.querySelector('.grid');
+      if(!grid) return;
+      lines.push('CARDS in "' + (sec.dataset.label || sec.id) + '":');
+      grid.querySelectorAll('.card').forEach(function(card, i){
+        lines.push('  ' + (i+1) + '. ' + (card.dataset.label || card.id));
+      });
+    });
+    var text = lines.join('\n');
+    navigator.clipboard.writeText(text).then(function(){
+      copyBtn.textContent = 'Copied ✓';
+      setTimeout(function(){ copyBtn.textContent = 'Copy Order'; }, 1800);
+    }).catch(function(){
+      alert(text);
+    });
+  });
+})();
+</script>
+</body>
+</html>
