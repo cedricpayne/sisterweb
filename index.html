@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rhinnan Payne: Social Media & Content Growth Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#2D1B3D;
@@ -28,7 +31,7 @@
   }
 
   .mono{
-    font-family:'SF Mono','Courier New',monospace;
+    font-family:'Montserrat', sans-serif;
     letter-spacing:0.02em;
   }
 
@@ -94,18 +97,20 @@
   .stat:nth-child(4){background:#EEE7FA;}
   .stat:nth-child(5){background:var(--paper-dim);}
   .stat:last-child{border-right:none;}
+  .stat-label{
+    font-size:13px;
+    font-weight:600;
+    color:var(--ink);
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+    margin-bottom:6px;
+    line-height:1.3;
+  }
   .stat-num{
     font-size:clamp(24px,3vw,34px);
     font-weight:700;
     letter-spacing:-0.01em;
     color:var(--ink);
-  }
-  .stat-label{
-    font-size:10px;
-    color:var(--grey);
-    text-transform:uppercase;
-    letter-spacing:0.06em;
-    margin-top:4px;
   }
 
   /* ===== SECTIONS ===== */
@@ -115,6 +120,14 @@
   }
   .section-head{
     margin-bottom:8px;
+  }
+  .section-kicker{
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--leaf);
+    margin-bottom:6px;
   }
   .section-handle{
     font-size:clamp(26px,3.4vw,36px);
@@ -129,10 +142,11 @@
     margin-top:4px;
   }
   .section-meta{
-    font-size:11px;
-    color:var(--grey);
+    font-size:13px;
+    font-weight:700;
+    color:var(--ink);
     text-transform:uppercase;
-    letter-spacing:0.05em;
+    letter-spacing:0.04em;
     margin-top:6px;
   }
   .section-summary{
@@ -149,6 +163,11 @@
     grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
     gap:24px;
   }
+  @media (min-width:900px){
+    .grid{
+      grid-template-columns:repeat(3, 1fr);
+    }
+  }
   .card{
     background:var(--paper);
     padding:16px;
@@ -162,6 +181,9 @@
   }
   .card:nth-child(3n+2){border-top-color:var(--signal);}
   .card:nth-child(3n+3){border-top-color:var(--sky);}
+  .card:has(.platform-instagram){border-top-color:var(--leaf);}
+  .card:has(.platform-tiktok){border-top-color:var(--signal);}
+  .card:has(.platform-youtube){border-top-color:var(--sky);}
   .card:hover{transform:translateY(-3px); box-shadow:0 8px 20px rgba(14,59,46,0.08);}
   .embed-wrap{
     border-radius:8px;
@@ -180,6 +202,9 @@
     color:var(--signal);
     font-weight:700;
   }
+  .card-platform.platform-instagram{ color:var(--leaf); }
+  .card-platform.platform-tiktok{ color:var(--signal); }
+  .card-platform.platform-youtube{ color:var(--sky); }
   .card-title{
     font-size:16px;
     font-weight:700;
@@ -263,6 +288,37 @@
     text-transform:uppercase;
     color:var(--grey);
   }
+  #export-btn{
+    position:fixed;
+    bottom:24px;
+    right:356px;
+    z-index:999;
+    background:var(--leaf);
+    color:var(--paper);
+    border:none;
+    padding:12px 20px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 6px 18px rgba(63,174,110,0.25);
+    display:none;
+  }
+  body.edit-mode #export-btn{display:inline-block;}
+  body.edit-mode .editable-target{
+    outline:1px dashed transparent;
+    border-radius:4px;
+    transition:outline-color 0.1s ease, background 0.1s ease;
+    cursor:text;
+  }
+  body.edit-mode .editable-target:hover{
+    outline:1px dashed var(--leaf);
+    background:rgba(63,174,110,0.06);
+  }
+  body.edit-mode .editable-target:focus{
+    outline:2px solid var(--leaf);
+    background:var(--paper-dim);
+  }
 
   /* ===== NEWSLETTER STRIP ===== */
   .archive-row{
@@ -276,18 +332,19 @@
   }
   .archive-row:last-child{border-bottom:none;}
   .archive-vol{
-    font-size:11px;
+    font-size:14px;
+    font-weight:600;
     color:var(--grey);
     min-width:70px;
   }
   .archive-title{
-    font-size:15px;
-    font-weight:600;
+    font-size:19px;
+    font-weight:700;
     flex-grow:1;
   }
   .archive-link{
-    font-size:12px;
-    font-weight:600;
+    font-size:16px;
+    font-weight:700;
     text-decoration:none;
     color:var(--sky);
     border-bottom:1px solid var(--sky);
@@ -400,27 +457,27 @@
     </div>
   </div>
 
-  <!-- ✏️ EDIT: the stats boxes. Each .stat is one box: the big number, then the small label. -->
+  <!-- ✏️ EDIT: the stats boxes. Each .stat is one box: the label on top, then the big number. -->
   <div class="stats-bar mono">
     <div class="stat">
+      <div class="stat-label">Account built from zero<br>@case.studied, 12 mo.</div>
       <div class="stat-num">0→55K</div>
-      <div class="stat-label">Channel built from zero (Case Studied IG, 12 mo.)</div>
     </div>
     <div class="stat">
+      <div class="stat-label">TikTok<br>@RhinnanPayne</div>
       <div class="stat-num">500K</div>
-      <div class="stat-label">TikTok: @RhinnanPayne</div>
     </div>
     <div class="stat">
+      <div class="stat-label">Instagram<br>@RhinnanPayne</div>
       <div class="stat-num">314K</div>
-      <div class="stat-label">Instagram: @RhinnanPayne</div>
     </div>
     <div class="stat">
-      <div class="stat-num">2</div>
-      <div class="stat-label">Original creative accounts, comic + lifestyle</div>
+      <div class="stat-label">YouTube<br>@Rhinnan_Payne</div>
+      <div class="stat-num">1.76K</div>
     </div>
     <div class="stat">
-      <div class="stat-num">Daily</div>
-      <div class="stat-label">Publishing cadence across all channels</div>
+      <div class="stat-label">Original content accounts across formats</div>
+      <div class="stat-num">4</div>
     </div>
   </div>
 </header>
@@ -434,38 +491,36 @@
      ============================================================ -->
 <section id="sec-case-studied" data-label="Case Studied Brief">
   <div class="section-head">
-    <div class="section-handle">Case Studied Brief</div>
-    <div class="section-subhead">Channel build, 0 to 55K in twelve months</div>
+    <div class="section-kicker">Account Growth</div>
+    <div class="section-handle">@case.studied</div>
+    <div class="section-subhead">Grew an Instagram account from 0 to 55K in twelve months</div>
     <div class="section-meta">Vendry · Newsletter &amp; Instagram</div>
   </div>
   <div class="section-summary">
-    Set up and grew Case Studied's Instagram channel from zero to <strong>55,000 followers in twelve months</strong>, owning content calendar, posting strategy, organic content, and Meta ads end to end. In parallel, ran full editorial ownership of the Case Studied Brief newsletter, read by <strong>40,000+ subscribers</strong> at a <strong>52% open rate</strong>, the same pattern this role calls for: standing up a channel from scratch, building a publishing structure, and driving early audience growth.
+    Set up and grew Case Studied's Instagram account from zero to <strong>55,000 followers in twelve months</strong>. Owned the content calendar, posting strategy, organic content, and Meta ads end to end. Also ran full editorial ownership of the Case Studied Brief newsletter, read by <strong>40,000+ subscribers</strong> at a <strong>52% open rate</strong>.
   </div>
 
   <div class="grid" id="grid-case-studied">
     <div class="card" id="card-elf" data-label="e.l.f. × Melissa McCarthy">
-      <div class="card-platform">Instagram</div>
+      <div class="card-platform platform-instagram">Instagram</div>
       <div class="card-title">e.l.f. × Melissa McCarthy</div>
       <div class="embed-wrap">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DUWTrA6kl3Q/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
       </div>
-      <div class="card-desc">Campaign breakdown post, top-performing format.</div>
     </div>
     <div class="card" id="card-twim" data-label="This Week in Marketing">
-      <div class="card-platform">Instagram</div>
+      <div class="card-platform platform-instagram">Instagram</div>
       <div class="card-title">This Week in Marketing</div>
       <div class="embed-wrap">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DZqDyOWmRqY/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
       </div>
-      <div class="card-desc">Weekly recurring recap series driving consistent return engagement, evidence of a working content calendar.</div>
     </div>
     <div class="card" id="card-mcd" data-label="McDonald's CEO Bite">
-      <div class="card-platform">Instagram</div>
+      <div class="card-platform platform-instagram">Instagram</div>
       <div class="card-title">McDonald's CEO Bite</div>
       <div class="embed-wrap">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DVg703igWHD/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
       </div>
-      <div class="card-desc">News-jacking format built for shareability.</div>
     </div>
   </div>
 
@@ -489,35 +544,66 @@
      ============================================================ -->
 <section id="sec-personal-brand" data-label="Personal Brand">
   <div class="section-head">
+    <div class="section-kicker">Original Content · Personal Brand</div>
     <div class="section-handle">@RhinnanPayne</div>
-    <div class="section-subhead">Grew a personal audience from the ground up across Instagram &amp; TikTok</div>
+    <div class="section-subhead">Grew a personal audience from the ground up across Instagram, TikTok &amp; YouTube</div>
     <div class="section-meta">314K Instagram · 500K TikTok</div>
   </div>
   <div class="section-summary">
-    Independent creator running <strong>314K</strong> Instagram and <strong>500K</strong> TikTok followers, built on short-form video with a bright, energetic, welcoming tone, the register that reads well to parents and general audiences alike. Content is edited and adapted separately for each platform, then cross-posted, the same workflow this role asks for: taking long-form content and turning it into short-form assets across YouTube Shorts, TikTok, and Reels.
+    Independent creator running <strong>314K</strong> Instagram and <strong>500K</strong> TikTok followers, built on original short-form video with a bright, energetic, welcoming tone. Every video is conceived, written, shot, edited, and posted independently: developing original content ideas, filming and editing them, and growing a following around them from scratch.
   </div>
 
   <div class="grid" id="grid-personal-brand">
     <div class="card" id="card-rp-1" data-label="RhinnanPayne Sample 1">
-      <div class="card-platform">Instagram</div>
+      <div class="card-platform platform-instagram">Instagram</div>
       <div class="card-title">@RhinnanPayne</div>
       <div class="embed-wrap">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DSYgbd1ElFu/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
       </div>
-      <div class="card-desc">Sample post from the main channel.</div>
     </div>
-    <div class="card" id="card-rp-2" data-label="RhinnanPayne Sample 2">
-      <div class="card-platform">TikTok</div>
+    <div class="card" id="card-rp-3" data-label="RhinnanPayne Sample 3">
+      <div class="card-platform platform-instagram">Instagram</div>
       <div class="card-title">@RhinnanPayne</div>
       <div class="embed-wrap">
-        <!-- ✏️ EDIT: TikTok embeds need the full video link (not a vt.tiktok.com short link).
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DUEFx1dlOC8/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
+      </div>
+    </div>
+    <div class="card" id="card-rp-5" data-label="RhinnanPayne Sample 5">
+      <div class="card-platform platform-instagram">Instagram</div>
+      <div class="card-title">@RhinnanPayne</div>
+      <div class="embed-wrap">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DYBAXbGyVXP/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
+      </div>
+    </div>
+    <div class="card" id="card-rp-4" data-label="RhinnanPayne Sample 4">
+      <div class="card-platform platform-tiktok">TikTok</div>
+      <div class="card-title">@RhinnanPayne</div>
+      <div class="embed-wrap">
+        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@rhinnanpayne/video/7515985632045387014" data-video-id="7515985632045387014" style="max-width:100%; min-width:100%; margin:0;">
+          <section></section>
+        </blockquote>
+      </div>
+    </div>
+    <div class="card" id="card-rp-2" data-label="RhinnanPayne Sample 2">
+      <div class="card-platform platform-tiktok">TikTok</div>
+      <div class="card-title">@RhinnanPayne</div>
+      <div class="embed-wrap">
+        <!-- ✏️ EDIT: this TikTok embed still uses a short link and may show up blank.
              Paste the full URL like https://www.tiktok.com/@user/video/1234567890 into cite,
              and put the long number at the end into data-video-id. -->
         <blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZSCkgQPfT/" data-video-id="" style="max-width:100%; min-width:100%; margin:0;">
           <section></section>
         </blockquote>
       </div>
-      <div class="card-desc">Sample post from the main channel, cross-posted from Instagram.</div>
+    </div>
+    <div class="card" id="card-rp-6" data-label="RhinnanPayne Sample 6">
+      <div class="card-platform platform-tiktok">TikTok</div>
+      <div class="card-title">@RhinnanPayne</div>
+      <div class="embed-wrap">
+        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@rhinnanpayne/video/7456913354729229574" data-video-id="7456913354729229574" style="max-width:100%; min-width:100%; margin:0;">
+          <section></section>
+        </blockquote>
+      </div>
     </div>
   </div>
 </section>
@@ -527,46 +613,91 @@
      ============================================================ -->
 <section id="sec-creative-projects" data-label="Creative Side Projects">
   <div class="section-head">
+    <div class="section-kicker">Original Content · Character &amp; Format IP</div>
     <div class="section-handle">@cloo_cool &amp; @thatscoolrhinnan</div>
-    <div class="section-subhead">Original, self-directed creative accounts</div>
+    <div class="section-subhead">Two more original, self-directed formats: an illustrated character and a lifestyle series</div>
     <div class="section-meta">Original IP · Instagram</div>
   </div>
   <div class="section-summary">
-    Independent projects outside the main channel, one an illustrated character series, the other a lifestyle and pop-culture format, both conceived, produced, and published solo. Evidence of range beyond talking-head content and comfort building a visual identity from the ground up.
+    Two additional self-directed accounts, distinct from the @RhinnanPayne channels: <strong>@cloo_cool</strong>, an original illustrated comic character, and <strong>@thatscoolrhinnan</strong>, a lifestyle and pop-culture format. Each is conceived, produced, and published solo, evidence of range beyond one format and comfort building a visual identity from the ground up.
   </div>
 
   <div class="grid" id="grid-creative-projects">
     <div class="card" id="card-cloo-1" data-label="Cloo the Blob, Post 1">
-      <div class="card-platform">Instagram · @cloo_cool</div>
+      <div class="card-platform platform-instagram">Instagram · @cloo_cool</div>
       <div class="card-title">Cloo</div>
       <div class="embed-wrap">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DZFAye9G3p-/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
       </div>
-      <div class="card-desc">Original comic character, hand-drawn and digitized into clean black-and-white illustration. Cloo is a small blob who explores everyday life, captioned with light, calm commentary.</div>
     </div>
     <div class="card" id="card-cloo-2" data-label="Cloo the Blob, Post 2">
-      <div class="card-platform">Instagram · @cloo_cool</div>
+      <div class="card-platform platform-instagram">Instagram · @cloo_cool</div>
       <div class="card-title">Cloo</div>
       <div class="embed-wrap">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DS_8GHNlcWs/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
       </div>
-      <div class="card-desc">Full concept-to-post pipeline: freehand illustration, scanned, digitized, then captioned and published.</div>
+    </div>
+    <div class="card" id="card-cloo-3" data-label="Cloo the Blob, Post 3">
+      <div class="card-platform platform-instagram">Instagram · @cloo_cool</div>
+      <div class="card-title">Cloo</div>
+      <div class="embed-wrap">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DPpUGHJAKJJ/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
+      </div>
     </div>
     <div class="card" id="card-tcr-1" data-label="That's Cool Rhinnan, Post 1">
-      <div class="card-platform">Instagram · @thatscoolrhinnan</div>
+      <div class="card-platform platform-instagram">Instagram · @thatscoolrhinnan</div>
       <div class="card-title">That's Cool Rhinnan</div>
       <div class="embed-wrap">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C8dWP9DPl2I/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
       </div>
-      <div class="card-desc">Casual, text-heavy lifestyle and pop-culture humor built from digital collage and everyday moments.</div>
     </div>
     <div class="card" id="card-tcr-2" data-label="That's Cool Rhinnan, Post 2">
-      <div class="card-platform">Instagram · @thatscoolrhinnan</div>
+      <div class="card-platform platform-instagram">Instagram · @thatscoolrhinnan</div>
       <div class="card-title">That's Cool Rhinnan</div>
       <div class="embed-wrap">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DUbvIx-khxC/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
       </div>
-      <div class="card-desc">Relatable, humorous commentary format layered over candid lifestyle snippets.</div>
+    </div>
+    <div class="card" id="card-tcr-3" data-label="That's Cool Rhinnan, Post 3">
+      <div class="card-platform platform-instagram">Instagram · @thatscoolrhinnan</div>
+      <div class="card-title">That's Cool Rhinnan</div>
+      <div class="embed-wrap">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DG9f33us5EU/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION: YouTube
+     ✏️ EDIT: to swap a video, replace the ID after /embed/ in the
+     iframe src (the part like q0cgsT2_fVk from the video's URL).
+     ============================================================ -->
+<section id="sec-youtube" data-label="YouTube">
+  <div class="section-head">
+    <div class="section-kicker">Original Content · YouTube</div>
+    <div class="section-handle">@Rhinnan_Payne</div>
+    <div class="section-subhead">Long-form and short-form video, self-produced</div>
+    <div class="section-meta">YouTube</div>
+  </div>
+  <div class="section-summary">
+    Self-produced YouTube channel covering the full process end to end: storyboarding and scripting each video, filming, editing, formatting for the platform, and publishing independently.
+  </div>
+
+  <div class="grid" id="grid-youtube">
+    <div class="card" id="card-yt-1" data-label="YouTube Sample 1">
+      <div class="card-platform platform-youtube">YouTube</div>
+      <div class="card-title">@Rhinnan_Payne</div>
+      <div class="embed-wrap">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/q0cgsT2_fVk" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius:8px;"></iframe>
+      </div>
+    </div>
+    <div class="card" id="card-yt-2" data-label="YouTube Sample 2">
+      <div class="card-platform platform-youtube">YouTube</div>
+      <div class="card-title">@Rhinnan_Payne</div>
+      <div class="embed-wrap">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/WCW5ymzUayU" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius:8px;"></iframe>
+      </div>
     </div>
   </div>
 </section>
@@ -576,33 +707,40 @@
      ============================================================ -->
 <section id="sec-partnerships" data-label="Brand Partnerships" style="border-bottom:none;">
   <div class="section-head">
+    <div class="section-kicker">Brand Work</div>
     <div class="section-handle">Brand Partnerships</div>
-    <div class="section-subhead">Coordinating sponsored content across platforms</div>
+    <div class="section-subhead">Sponsored content across personal and client accounts</div>
     <div class="section-meta">Sponsored Content</div>
   </div>
   <div class="section-summary">
-    Coordinated sponsored content for major streaming and audio platforms, aligning partner briefs with personal channel publishing schedules across Instagram and TikTok, the same coordination this role needs between an influencer partner and channel launch.
+    Coordinated and produced sponsored content across the personal @RhinnanPayne channels and the @case.studied account, aligning each partner's brief with the account's existing tone and publishing schedule.
   </div>
 
   <div class="grid" id="grid-partnerships">
-    <div class="card" id="card-primevideo" data-label="Prime Video Partnership">
-      <div class="card-platform">Instagram · Prime Video</div>
+    <div class="card" id="card-primevideo" data-label="RhinnanPayne - Instagram - Prime Video">
+      <div class="card-platform platform-instagram">RhinnanPayne - Instagram - Prime Video</div>
       <div class="card-title">Prime Video Partnership</div>
       <div class="embed-wrap">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DYXexM1hFiM/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
       </div>
-      <div class="card-desc">Conversational sponsored integration.</div>
     </div>
-    <div class="card" id="card-spotify" data-label="Spotify Partnership">
-      <div class="card-platform">TikTok · Spotify</div>
+    <div class="card" id="card-spotify" data-label="RhinnanPayne - TikTok - Spotify">
+      <div class="card-platform platform-tiktok">RhinnanPayne - TikTok - Spotify</div>
       <div class="card-title">Spotify Partnership</div>
       <div class="embed-wrap">
-        <!-- ✏️ EDIT: same as the other TikTok embed — needs full URL + video ID to display. -->
+        <!-- ✏️ EDIT: this TikTok embed still uses a short link and may show up blank.
+             Same fix as above: full URL in cite, video number in data-video-id. -->
         <blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZSCkpjo1w/" data-video-id="" style="max-width:100%; min-width:100%; margin:0;">
           <section></section>
         </blockquote>
       </div>
-      <div class="card-desc">Promotional sponsored video.</div>
+    </div>
+    <div class="card" id="card-ordinary" data-label="Case.Studied - Instagram - The Ordinary">
+      <div class="card-platform platform-instagram">Case.Studied - Instagram - The Ordinary</div>
+      <div class="card-title">The Ordinary Partnership</div>
+      <div class="embed-wrap">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DY2pnbLiZwO/" data-instgrm-version="14" style="width:100%; margin:0;"></blockquote>
+      </div>
     </div>
   </div>
   <div class="section-meta" style="margin-top:18px;">Additional partnerships: Meta, Netflix</div>
@@ -616,6 +754,7 @@
 
 <button id="edit-toggle">Edit Layout</button>
 <button id="copy-order-btn">Copy Order</button>
+<button id="export-btn">Export Updated HTML</button>
 
 <script>
 (function(){
@@ -661,6 +800,7 @@
   var body = document.body;
   var editBtn = document.getElementById('edit-toggle');
   var copyBtn = document.getElementById('copy-order-btn');
+  var exportBtn = document.getElementById('export-btn');
   var draggedEl = null;
 
   function makeDraggable(el){
@@ -719,7 +859,66 @@
 
   editBtn.addEventListener('click', function(){
     body.classList.toggle('edit-mode');
-    editBtn.textContent = body.classList.contains('edit-mode') ? 'Exit Edit Mode' : 'Edit Layout';
+    var isEditing = body.classList.contains('edit-mode');
+    editBtn.textContent = isEditing ? 'Exit Edit Mode' : 'Edit Layout';
+    toggleTextEditing(isEditing);
+  });
+
+  // ===== TEXT EDITING =====
+  var EDITABLE_SELECTORS = [
+    'h1', '.role-line', '.contact-block a',
+    '.stat-num', '.stat-label',
+    '.section-kicker', '.section-handle', '.section-subhead', '.section-meta',
+    '.section-summary',
+    '.card-platform', '.card-title', '.card-desc', '.card-metric',
+    '.archive-vol', '.archive-title',
+    'footer > div:first-child'
+  ];
+
+  function toggleTextEditing(on){
+    var els = document.querySelectorAll(EDITABLE_SELECTORS.join(','));
+    els.forEach(function(el){
+      // skip elements inside the gate or embeds
+      if(el.closest('#gate') || el.closest('.embed-wrap')) return;
+      el.classList.add('editable-target');
+      el.setAttribute('contenteditable', on ? 'true' : 'false');
+    });
+  }
+
+  // ===== EXPORT =====
+  exportBtn.addEventListener('click', function(){
+    // clone the full document so we don't mutate the live page
+    var docClone = document.documentElement.cloneNode(true);
+
+    // strip editing-only artifacts from the clone
+    var cloneBody = docClone.querySelector('body');
+    cloneBody.classList.remove('edit-mode');
+    cloneBody.classList.remove('locked');
+
+    docClone.querySelectorAll('.editable-target').forEach(function(el){
+      el.removeAttribute('contenteditable');
+      el.classList.remove('editable-target');
+    });
+    docClone.querySelectorAll('[draggable]').forEach(function(el){
+      el.removeAttribute('draggable');
+    });
+    docClone.querySelectorAll('.dragging').forEach(function(el){
+      el.classList.remove('dragging');
+    });
+
+    var htmlStr = '<!DOCTYPE html>\n' + docClone.outerHTML;
+    var blob = new Blob([htmlStr], {type: 'text/html'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'portfolio-updated.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    exportBtn.textContent = 'Downloaded ✓';
+    setTimeout(function(){ exportBtn.textContent = 'Export Updated HTML'; }, 1800);
   });
 
   copyBtn.addEventListener('click', function(){
