@@ -367,84 +367,10 @@
     .masthead-top{flex-direction:column; align-items:flex-start;}
     .contact-block{text-align:left;}
   }
-
-  /* ===== PASSWORD GATE ===== */
-  #gate{
-    position:fixed;
-    inset:0;
-    background:var(--ink);
-    z-index:9999;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:24px;
-  }
-  #gate.hidden{display:none;}
-  #gate-box{
-    background:var(--paper);
-    border-radius:16px;
-    padding:40px;
-    max-width:360px;
-    width:100%;
-    text-align:center;
-    box-shadow:0 20px 50px rgba(0,0,0,0.3);
-  }
-  #gate-box h2{
-    font-size:20px;
-    margin-bottom:6px;
-    color:var(--ink);
-  }
-  #gate-box p{
-    font-size:13px;
-    color:var(--grey);
-    margin-bottom:20px;
-  }
-  #gate-input{
-    width:100%;
-    padding:12px 14px;
-    border:1px solid var(--line);
-    border-radius:8px;
-    font-size:14px;
-    margin-bottom:12px;
-    font-family:inherit;
-  }
-  #gate-input:focus{
-    outline:none;
-    border-color:var(--sky);
-  }
-  #gate-submit{
-    width:100%;
-    padding:12px;
-    background:var(--signal);
-    color:var(--paper);
-    border:none;
-    border-radius:8px;
-    font-size:14px;
-    font-weight:600;
-    cursor:pointer;
-  }
-  #gate-error{
-    font-size:12px;
-    color:var(--signal);
-    margin-top:10px;
-    display:none;
-  }
-  body.locked > *:not(#gate){display:none;}
 </style>
 </head>
-<body class="locked">
+<body>
 
-<div id="gate">
-  <div id="gate-box">
-    <h2>Private Portfolio</h2>
-    <p>Enter the password to view Rhinnan Payne's work.</p>
-    <input type="password" id="gate-input" placeholder="Password" autocomplete="off">
-    <button id="gate-submit">Enter</button>
-    <div id="gate-error">Incorrect password. Try again.</div>
-  </div>
-</div>
-
-<!-- ✏️ EDIT: name, role, email, and LinkedIn link live here -->
 <header class="masthead">
   <div class="masthead-top">
     <div>
@@ -452,12 +378,16 @@
       <div class="role-line">Social Media &amp; Content Growth Manager</div>
     </div>
     <div class="contact-block">
-      <div><a href="mailto:RhinnanPayne@gmail.com">RhinnanPayne@gmail.com</a></div>
-      <div><a href="https://www.linkedin.com/in/rhinnanpayne" target="_blank" rel="noopener">linkedin.com/in/rhinnanpayne</a></div>
+      <div class="section-meta" style="margin:0 0 6px;">Contact</div>
+      <div>
+        <a href="mailto:ContactRhinnanPayne@gmail.com">Email</a> ·
+        <a href="https://www.linkedin.com/in/rhinnanpayne" target="_blank" rel="noopener">LinkedIn</a> ·
+        <a href="https://www.instagram.com/rhinnanpayne/" target="_blank" rel="noopener">Instagram</a> ·
+        <a href="https://www.tiktok.com/@rhinnanpayne" target="_blank" rel="noopener">TikTok</a>
+      </div>
     </div>
   </div>
 
-  <!-- ✏️ EDIT: the stats boxes. Each .stat is one box: the label on top, then the big number. -->
   <div class="stats-bar mono">
     <div class="stat">
       <div class="stat-label">Account built from zero<br>@case.studied, 12 mo.</div>
@@ -482,13 +412,7 @@
   </div>
 </header>
 
-<!-- ============================================================
-     SECTION: Case Studied / Vendry
-     ✏️ EDIT: headline, summary text, and the cards below.
-     To add a card: copy an entire <div class="card">...</div> block,
-     paste it inside the grid, and change the Instagram link in
-     data-instgrm-permalink to the new post's URL.
-     ============================================================ -->
+<!-- CASE STUDIED / VENDRY -->
 <section id="sec-case-studied" data-label="Case Studied Brief">
   <div class="section-head">
     <div class="section-kicker">Account Growth</div>
@@ -524,7 +448,6 @@
     </div>
   </div>
 
-  <!-- ✏️ EDIT: newsletter issue links -->
   <div style="margin-top:32px;">
     <div class="archive-row">
       <div class="archive-vol mono">Vol. 22</div>
@@ -539,9 +462,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     SECTION: Personal brand (@RhinnanPayne)
-     ============================================================ -->
+<!-- PERSONAL BRAND -->
 <section id="sec-personal-brand" data-label="Personal Brand">
   <div class="section-head">
     <div class="section-kicker">Original Content · Personal Brand</div>
@@ -588,9 +509,6 @@
       <div class="card-platform platform-tiktok">TikTok</div>
       <div class="card-title">@RhinnanPayne</div>
       <div class="embed-wrap">
-        <!-- ✏️ EDIT: this TikTok embed still uses a short link and may show up blank.
-             Paste the full URL like https://www.tiktok.com/@user/video/1234567890 into cite,
-             and put the long number at the end into data-video-id. -->
         <blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZSCkgQPfT/" data-video-id="" style="max-width:100%; min-width:100%; margin:0;">
           <section></section>
         </blockquote>
@@ -608,9 +526,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     SECTION: Creative side projects
-     ============================================================ -->
+<!-- CREATIVE SIDE PROJECTS -->
 <section id="sec-creative-projects" data-label="Creative Side Projects">
   <div class="section-head">
     <div class="section-kicker">Original Content · Character &amp; Format IP</div>
@@ -668,11 +584,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     SECTION: YouTube
-     ✏️ EDIT: to swap a video, replace the ID after /embed/ in the
-     iframe src (the part like q0cgsT2_fVk from the video's URL).
-     ============================================================ -->
+<!-- YOUTUBE -->
 <section id="sec-youtube" data-label="YouTube">
   <div class="section-head">
     <div class="section-kicker">Original Content · YouTube</div>
@@ -702,9 +614,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     SECTION: Brand partnerships
-     ============================================================ -->
+<!-- BRAND PARTNERSHIPS -->
 <section id="sec-partnerships" data-label="Brand Partnerships" style="border-bottom:none;">
   <div class="section-head">
     <div class="section-kicker">Brand Work</div>
@@ -728,8 +638,6 @@
       <div class="card-platform platform-tiktok">RhinnanPayne - TikTok - Spotify</div>
       <div class="card-title">Spotify Partnership</div>
       <div class="embed-wrap">
-        <!-- ✏️ EDIT: this TikTok embed still uses a short link and may show up blank.
-             Same fix as above: full URL in cite, video number in data-video-id. -->
         <blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZSCkpjo1w/" data-video-id="" style="max-width:100%; min-width:100%; margin:0;">
           <section></section>
         </blockquote>
@@ -746,53 +654,20 @@
   <div class="section-meta" style="margin-top:18px;">Additional partnerships: Meta, Netflix</div>
 </section>
 
-<!-- ✏️ EDIT: footer contact info -->
 <footer>
   <div>Rhinnan Payne: Social Media &amp; Content Growth Manager</div>
-  <div><a href="mailto:RhinnanPayne@gmail.com">RhinnanPayne@gmail.com</a> · <a href="https://www.linkedin.com/in/rhinnanpayne" target="_blank" rel="noopener">LinkedIn</a></div>
+  <div>
+    <a href="https://www.linkedin.com/in/rhinnanpayne" target="_blank" rel="noopener">LinkedIn</a> ·
+    <a href="https://www.instagram.com/rhinnanpayne/" target="_blank" rel="noopener">Instagram</a> ·
+    <a href="https://www.tiktok.com/@rhinnanpayne" target="_blank" rel="noopener">TikTok</a>
+  </div>
 </footer>
 
 <button id="edit-toggle">Edit Layout</button>
 <button id="copy-order-btn">Copy Order</button>
 <button id="export-btn">Export Updated HTML</button>
 
-<script>
-(function(){
-  /* ✏️ EDIT: change the password here.
-     NOTE: this is a courtesy gate, not real security — anyone who views the
-     page source can read it. Don't reuse a password from anywhere else. */
-  var PASSWORD = "PortfolioRP";
-  var gate = document.getElementById('gate');
-  var input = document.getElementById('gate-input');
-  var submit = document.getElementById('gate-submit');
-  var error = document.getElementById('gate-error');
-  var body = document.body;
-
-  function tryUnlock(){
-    if(input.value === PASSWORD){
-      body.classList.remove('locked');
-      gate.classList.add('hidden');
-      sessionStorage.setItem('rp-portfolio-unlocked', '1');
-    } else {
-      error.style.display = 'block';
-      input.value = '';
-      input.focus();
-    }
-  }
-
-  if(sessionStorage.getItem('rp-portfolio-unlocked') === '1'){
-    body.classList.remove('locked');
-    gate.classList.add('hidden');
-  }
-
-  submit.addEventListener('click', tryUnlock);
-  input.addEventListener('keydown', function(e){
-    if(e.key === 'Enter') tryUnlock();
-  });
-})();
-</script>
-
-<script async src="https://www.instagram.com/embed.js"></script>
+<script async src="//www.instagram.com/embed.js"></script>
 <script async src="https://www.tiktok.com/embed.js"></script>
 
 <script>
@@ -878,8 +753,8 @@
   function toggleTextEditing(on){
     var els = document.querySelectorAll(EDITABLE_SELECTORS.join(','));
     els.forEach(function(el){
-      // skip elements inside the gate or embeds
-      if(el.closest('#gate') || el.closest('.embed-wrap')) return;
+      // skip elements inside embeds
+      if(el.closest('.embed-wrap')) return;
       el.classList.add('editable-target');
       el.setAttribute('contenteditable', on ? 'true' : 'false');
     });
